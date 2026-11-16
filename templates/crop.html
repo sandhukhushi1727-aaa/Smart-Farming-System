@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+
+{% block title %}Crop Recommendation | Smart Farming System{% endblock %}
+
+{% block content %}
+
+<section class="crop-hero">
+    <div class="crop-hero-content">
+        <span class="eyebrow">SMART AGRICULTURE TOOL</span>
+        <h1>Crop <span>Recommendation</span></h1>
+
+```
+   <p>
+    Enter your soil and environmental information to receive
+    an AI-based crop recommendation using our trained
+    Machine Learning model.
+    </p>
+</div>
+```
+
+</section>
+
+<section class="crop-section">
+
+```
+<div class="crop-form-container">
+
+    <div class="crop-form-heading">
+        <h2>Enter Soil & Climate Details</h2>
+        <p>Complete all seven fields below.</p>
+    </div>
+
+
+    {% if error %}
+        <div class="error-message" role="alert">
+            {{ error }}
+        </div>
+    {% endif %}
+
+    <form action="{{ url_for('crop_recommendation') }}"
+          method="POST">
+
+        <div class="crop-input-grid">
+
+            <div class="form-group">
+                <label for="nitrogen">Nitrogen (N)</label>
+                <input
+                    type="number"
+                    id="nitrogen"
+                    name="nitrogen"
+                    min="0"
+                    max="200"
+                    step="any"
+                    placeholder="e.g. 90"
+                    required
+                    value="{{ form_data.get('nitrogen', '') if form_data else '' }}"
+                >
+                <small>Nutrient value from your soil data.</small>
+            </div>
+
+            <div class="form-group">
+                <label for="phosphorus">Phosphorus (P)</label>
+                <input
+                    type="number"
+                    id="phosphorus"
+                    name="phosphorus"
+                    min="0"
+                    max="200"
+                    step="any"
+                    placeholder="e.g. 42"
+                    required
+                    value="{{ form_data.get('phosphorus', '') if form_data else '' }}"
+                >
+                <small>Nutrient value from your soil data.</small>
+            </div>
+
+            <div class="form-group">
+                <label for="potassium">Potassium (K)</label>
+                <input
+                    type="number"
+                    id="potassium"
+                    name="potassium"
+                    min="0"
+                    max="300"
+                    step="any"
+                    placeholder="e.g. 43"
+                    required
+                    value="{{ form_data.get('potassium', '') if form_data else '' }}"
+                >
+                <small>Nutrient value from your soil data.</small>
+            </div>
+
+            <div class="form-group">
+                <label for="temperature">Temperature (°C)</label>
+                <input
+                    type="number"
+                    id="temperature"
+                    name="temperature"
+                    min="-10"
+                    max="60"
+                    step="any"
+                    placeholder="e.g. 25"
+                    required
+                    value="{{ form_data.get('temperature', '') if form_data else '' }}"
+                >
+                <small>Temperature in degrees Celsius.</small>
+            </div>
+
+            <div class="form-group">
+                <label for="humidity">Humidity (%)</label>
+                <input
+                    type="number"
+                    id="humidity"
+                    name="humidity"
+                    min="0"
+                    max="100"
+                    step="any"
+                    placeholder="e.g. 80"
+                    required
+                    value="{{ form_data.get('humidity', '') if form_data else '' }}"
+                >
+                <small>Relative humidity percentage.</small>
+            </div>
+
+            <div class="form-group">
+                <label for="ph">Soil pH</label>
+                <input
+                    type="number"
+                    id="ph"
+                    name="ph"
+                    min="0"
+                    max="14"
+                    step="any"
+                    placeholder="e.g. 6.5"
+                    required
+                    value="{{ form_data.get('ph', '') if form_data else '' }}"
+                >
+                <small>pH scale ranges from 0 to 14.</small>
+            </div>
+
+            <div class="form-group rainfall-field">
+                <label for="rainfall">Rainfall (mm)</label>
+                <input
+                    type="number"
+                    id="rainfall"
+                    name="rainfall"
+                    min="0"
+                    max="10000"
+                    step="any"
+                    placeholder="e.g. 200"
+                    required
+                    value="{{ form_data.get('rainfall', '') if form_data else '' }}"
+                >
+                <small>Rainfall value in millimetres.</small>
+            </div>
+
+        </div>
+
+        <button type="submit" class="btn crop-submit">
+            🌾 Recommend Crop
+        </button>
+
+        <p class="crop-note">
+        Your crop recommendation is generated using a trained
+        Machine Learning model based on the values you provide.
+        </p>
+
+    </form>
+
+</div>
+```
+
+</section>
+
+{% endblock %}

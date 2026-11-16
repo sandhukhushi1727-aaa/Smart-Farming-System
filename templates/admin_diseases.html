@@ -1,0 +1,235 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="disease-admin-container">
+
+    <h1>🦠 Disease Management</h1>
+
+    <p>Add, edit and manage plant disease information.</p>
+
+
+    <!-- ADD DISEASE FORM -->
+
+    <div class="form-card">
+
+        <h2>➕ Add New Disease</h2>
+
+        <form method="POST" action="{{ url_for('add_disease') }}">
+
+            <input type="text"
+                   name="disease_name"
+                   placeholder="Disease Name"
+                   required>
+
+            <input type="text"
+                   name="crop_name"
+                   placeholder="Crop Name"
+                   required>
+
+            <textarea name="symptoms"
+                      placeholder="Symptoms"
+                      required></textarea>
+
+            <textarea name="causes"
+                      placeholder="Causes"
+                      required></textarea>
+
+            <textarea name="prevention"
+                      placeholder="Prevention Methods"
+                      required></textarea>
+
+            <textarea name="management"
+                      placeholder="Management / Treatment"
+                      required></textarea>
+
+            <button type="submit" class="add-btn">
+                ➕ Add Disease
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <!-- EXISTING DISEASE RECORDS -->
+
+    <h2 class="records-heading">Existing Diseases</h2>
+
+    <div class="disease-list">
+
+        {% for disease in diseases %}
+
+        <div class="disease-card">
+
+            <h3>{{ disease.disease_name }}</h3>
+
+            <p><strong>Crop:</strong> {{ disease.crop_name }}</p>
+
+            <p><strong>Symptoms:</strong> {{ disease.symptoms }}</p>
+
+            <p><strong>Causes:</strong> {{ disease.causes }}</p>
+
+            <p><strong>Prevention:</strong> {{ disease.prevention }}</p>
+
+            <p><strong>Management:</strong> {{ disease.management }}</p>
+
+            <div class="action-buttons">
+
+                <a href="{{ url_for('edit_disease',
+                                    disease_id=disease.disease_id) }}"
+                   class="edit-btn">
+                    ✏️ Edit
+                </a>
+
+                <form method="POST"
+                      action="{{ url_for('delete_disease',
+                                         disease_id=disease.disease_id) }}"
+                      onsubmit="return confirm('Are you sure you want to delete this disease?');">
+
+                    <button type="submit" class="delete-btn">
+                        🗑️ Delete
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+        {% else %}
+
+        <p>No disease records found.</p>
+
+        {% endfor %}
+
+    </div>
+
+
+    <a href="{{ url_for('admin') }}" class="back-btn">
+        ← Back to Admin Dashboard
+    </a>
+
+</div>
+
+
+<style>
+
+.disease-admin-container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.disease-admin-container h1,
+.records-heading {
+    text-align: center;
+    color: #1f5d38;
+}
+
+.disease-admin-container > p {
+    text-align: center;
+}
+
+.form-card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    margin: 30px 0;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
+
+.form-card h2 {
+    color: #1f5d38;
+    text-align: center;
+}
+
+.form-card input,
+.form-card textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+.form-card textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+.add-btn,
+.edit-btn,
+.delete-btn {
+    padding: 11px 18px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+}
+
+.add-btn {
+    background: #2e7d32;
+}
+
+.disease-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+    margin-top: 25px;
+}
+
+.disease-card {
+    background: white;
+    padding: 22px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    border-left: 5px solid #2e7d32;
+    overflow-wrap: anywhere;
+}
+
+.disease-card h3 {
+    color: #1f5d38;
+}
+
+.disease-card p {
+    line-height: 1.6;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.edit-btn {
+    background: #1976d2;
+}
+
+.delete-btn {
+    background: #dc3545;
+}
+
+.back-btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 12px 20px;
+    background: #1f5d38;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+}
+
+@media(max-width: 700px) {
+    .disease-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+</style>
+
+{% endblock %}

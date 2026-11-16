@@ -1,0 +1,1597 @@
+/* =====================================
+   GENERAL PAGE SETTINGS
+===================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f3f7f0;
+    color: #173c2b;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/* =====================================
+   NAVIGATION BAR
+===================================== */
+
+.navbar {
+    width: 100%;
+    min-height: 72px;
+    padding: 15px 8%;
+    background: #073d2b;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.logo {
+    color: white;
+    font-size: 23px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.logo-icon {
+    font-size: 27px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.nav-links a {
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 8px 3px;
+    border-bottom: 2px solid transparent;
+    transition: 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #8be28c;
+    border-bottom-color: #65d96b;
+}
+
+
+/* =====================================
+   HOME PAGE HERO BACKGROUND
+===================================== */
+
+.hero {
+    min-height: 500px;
+
+    background-image: url("/static/images/farming-home.jpeg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    align-items: center;
+    padding: 65px 8%;
+}
+
+.hero-content {
+    max-width: 650px;
+    color: white;
+}
+
+.eyebrow {
+    display: inline-block;
+    color: #a4ee9d;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+}
+
+.hero h1 {
+    font-size: clamp(38px, 5vw, 62px);
+    line-height: 1.15;
+    margin-bottom: 22px;
+}
+
+.hero h1 span {
+    color: #70df70;
+}
+
+.hero p {
+    max-width: 560px;
+    font-size: 17px;
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+
+
+/* =====================================
+   GREEN BUTTON
+===================================== */
+
+.btn {
+    display: inline-block;
+    padding: 13px 23px;
+    background: #62d66c;
+    color: #103b25;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: white;
+    transform: translateY(-2px);
+}
+
+
+/* =====================================
+   SECTION HEADINGS
+===================================== */
+
+.features-section,
+.objectives-section {
+    padding: 45px 8%;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.section-heading h2 {
+    color: #124c34;
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.section-heading p {
+    color: #5b7063;
+    font-size: 15px;
+}
+
+
+/* =====================================
+   HOME PAGE FEATURE CARDS
+===================================== */
+
+.features-container {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.feature-card {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    padding: 28px;
+    background: white;
+    border: 1px solid #e1e9df;
+    border-radius: 15px;
+    box-shadow: 0 5px 18px rgba(18, 76, 52, 0.06);
+    transition: 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(18, 76, 52, 0.12);
+}
+
+.feature-icon,
+.objective-icon {
+    min-width: 65px;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background: #155b3d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 29px;
+}
+
+.feature-content h3 {
+    color: #154b34;
+    font-size: 19px;
+    margin-bottom: 8px;
+}
+
+.feature-content p {
+    color: #506357;
+    font-size: 14px;
+}
+
+
+/* =====================================
+   ABOUT PAGE HERO
+===================================== */
+
+.about-hero {
+    min-height: 400px;
+
+    background-image: url("/static/images/farming-about.jpeg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    align-items: center;
+    padding: 55px 8%;
+}
+
+.about-hero-content {
+    max-width: 650px;
+    color: white;
+}
+
+.about-hero h1 {
+    font-size: clamp(32px, 4vw, 48px);
+    line-height: 1.25;
+    margin-bottom: 20px;
+}
+
+.about-hero h1 span {
+    color: #78e477;
+}
+
+.about-hero p {
+    font-size: 16px;
+    line-height: 1.9;
+    margin-bottom: 12px;
+}
+
+
+/* =====================================
+   ABOUT PAGE OBJECTIVES
+===================================== */
+
+.objectives-container {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.objective-card {
+    text-align: center;
+    padding: 25px 18px;
+    background: white;
+    border-radius: 14px;
+    border: 1px solid #e1e9df;
+    box-shadow: 0 5px 18px rgba(18, 76, 52, 0.05);
+    transition: 0.3s;
+}
+
+.objective-card:hover {
+    transform: translateY(-5px);
+}
+
+.objective-icon {
+    margin: 0 auto 18px;
+    color: white;
+}
+
+.objective-card h3 {
+    font-size: 17px;
+    color: #164a33;
+    margin-bottom: 10px;
+}
+
+.objective-card p {
+    font-size: 14px;
+    color: #5b7063;
+}
+
+
+/* =====================================
+   FOOTER
+===================================== */
+
+.footer {
+    background: #073d2b;
+    color: white;
+    padding: 22px 8%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px 35px;
+    flex-wrap: wrap;
+    font-size: 13px;
+    text-align: center;
+}
+
+.footer-tagline {
+    color: #b5e9b5;
+}
+
+
+/* =====================================
+   TABLETS
+===================================== */
+
+@media (max-width: 900px) {
+
+    .features-container {
+        grid-template-columns: 1fr;
+    }
+
+    .objectives-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .hero {
+        min-height: 420px;
+    }
+
+}
+
+
+/* =====================================
+   MOBILE PHONES
+===================================== */
+
+@media (max-width: 600px) {
+
+    .navbar {
+        padding: 16px 5%;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .nav-links {
+        gap: 22px;
+    }
+
+    .hero {
+        min-height: 430px;
+        padding: 45px 6%;
+        background-position: center;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+    .features-section,
+    .objectives-section {
+        padding: 35px 5%;
+    }
+
+    .section-heading h2 {
+        font-size: 27px;
+    }
+
+    .feature-card {
+        padding: 20px;
+        gap: 15px;
+    }
+
+    .feature-icon,
+    .objective-icon {
+        min-width: 52px;
+        width: 52px;
+        height: 52px;
+        font-size: 24px;
+    }
+
+    .about-hero {
+        padding: 40px 6%;
+        min-height: 430px;
+        background-position: center;
+    }
+
+    .about-hero h1 {
+        font-size: 34px;
+    }
+
+    .about-hero p {
+        font-size: 15px;
+    }
+
+    .objectives-container {
+        grid-template-columns: 1fr;
+    }
+
+    .footer {
+        padding: 22px 5%;
+    }
+
+}
+
+/* DAY 10: HOME PAGE */
+
+html {
+    scroll-behavior: smooth;
+}
+
+.hero {
+    width: 100%;
+    min-height: 650px;
+
+    background:
+        linear-gradient(
+            rgba(3, 35, 23, 0.45),
+            rgba(3, 35, 23, 0.45)
+        ),
+        url("/static/images/farming-home.jpeg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    align-items: center;
+
+    padding: 65px 8%;
+    color: white;
+
+    box-sizing: border-box;
+}
+
+.hero-content {
+    max-width: 700px;
+}
+
+.eyebrow {
+    display: inline-block;
+    color: #4d9b55;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+.hero .eyebrow {
+    color: #d4f5b8;
+}
+
+.hero h1 {
+    font-size: clamp(36px, 5vw, 60px);
+    line-height: 1.15;
+    margin: 0 0 20px;
+}
+
+.hero h1 span {
+    color: #b8ed85;
+    display: block;
+}
+
+.hero p {
+    max-width: 600px;
+    line-height: 1.8;
+    font-size: 17px;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 28px;
+}
+
+.btn {
+    display: inline-block;
+    background: #2f7d32;
+    color: white;
+    text-decoration: none;
+    padding: 14px 22px;
+    border-radius: 7px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.btn:hover {
+    background: #225e26;
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid white;
+}
+
+.btn-outline:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.home-section {
+    padding: 65px 8%;
+}
+
+.section-heading {
+    max-width: 760px;
+    margin: 0 auto 35px;
+    text-align: center;
+}
+
+.section-heading h2,
+.cta-section h2 {
+    color: #214d2b;
+    font-size: clamp(26px, 4vw, 36px);
+    margin: 0 0 16px;
+}
+
+.section-heading p {
+    color: #59665b;
+    line-height: 1.8;
+}
+
+.about-section {
+    background: #f5f9f1;
+}
+
+.features-section {
+    background: #ffffff;
+}
+
+.home-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.home-card {
+    background: #f7faf5;
+    border: 1px solid #e2ebdf;
+    border-radius: 14px;
+    padding: 28px;
+    scroll-margin-top: 30px;
+}
+
+.home-card h3 {
+    color: #285b31;
+    margin: 15px 0 10px;
+}
+
+.home-card p {
+    color: #59665b;
+    line-height: 1.8;
+}
+
+.feature-icon {
+    font-size: 36px;
+}
+
+.text-link {
+    color: #2f7d32;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.text-link:hover {
+    text-decoration: underline;
+}
+
+.how-section {
+    background: #f2f7ee;
+}
+
+.process-card {
+    background: white;
+}
+
+.step-number {
+    font-size: 30px;
+    font-weight: bold;
+    color: #4b9148;
+}
+
+.benefits-section {
+    background: white;
+}
+
+.benefits-list {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.benefits-list p {
+    background: #f4f8f0;
+    border-radius: 8px;
+    padding: 15px 18px;
+    margin: 12px 0;
+    color: #315a35;
+}
+
+.cta-section {
+    text-align: center;
+    padding: 65px 8%;
+    background: #e7f2df;
+}
+
+.cta-section p {
+    color: #526452;
+    line-height: 1.8;
+    margin: 15px auto 25px;
+    max-width: 650px;
+}
+
+/* Make the layout work on phones and tablets */
+@media (max-width: 800px) {
+    .home-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        min-height: 450px;
+        padding: 45px 6%;
+    }
+
+    .home-section {
+        padding: 45px 6%;
+    }
+}
+
+/* DAY 11: ABOUT PAGE */
+
+.about-hero {
+min-height: 350px;
+background:
+linear-gradient(rgba(3, 35, 23, 0.65), rgba(3, 35, 23, 0.65)),
+url("/static/images/farming-about.jpeg") center/cover no-repeat;
+display: flex;
+align-items: center;
+padding: 60px 8%;
+color: white;
+}
+
+.about-hero-content {
+max-width: 750px;
+}
+
+.about-hero h1 {
+font-size: clamp(34px, 5vw, 52px);
+line-height: 1.2;
+}
+
+.about-hero h1 span {
+color: #b8ed85;
+}
+
+.about-hero p {
+line-height: 1.8;
+max-width: 650px;
+}
+
+.about-problems,
+.about-technologies {
+background: #f5f9f1;
+}
+
+.about-ai,
+.about-benefits {
+background: #ffffff;
+}
+
+.about-objectives {
+background: #f2f7ee;
+}
+
+/* DAY 11: CONTACT PAGE */
+
+.contact-hero {
+background: #edf5e8;
+padding: 55px 8%;
+text-align: center;
+}
+
+.contact-heading {
+max-width: 750px;
+margin: auto;
+}
+
+.contact-heading h1 {
+font-size: clamp(34px, 5vw, 48px);
+color: #214d2b;
+margin: 0 0 15px;
+}
+
+.contact-heading h1 span {
+color: #398544;
+}
+
+.contact-heading p {
+color: #59665b;
+line-height: 1.8;
+}
+
+.contact-section {
+display: grid;
+grid-template-columns: 1fr 1.2fr;
+gap: 40px;
+padding: 60px 8%;
+align-items: start;
+background: #ffffff;
+}
+
+.contact-info h2,
+.contact-form-container h2 {
+color: #214d2b;
+margin-top: 0;
+}
+
+.contact-info > p {
+line-height: 1.8;
+color: #59665b;
+}
+
+.contact-info-card {
+display: flex;
+align-items: center;
+gap: 15px;
+background: #f4f8f0;
+padding: 18px;
+margin-top: 18px;
+border-radius: 10px;
+}
+
+.contact-info-card > span {
+font-size: 30px;
+}
+
+.contact-info-card h3 {
+margin: 0 0 5px;
+color: #285b31;
+}
+
+.contact-info-card p {
+margin: 0;
+color: #59665b;
+}
+
+.contact-form-container {
+background: #f8faf6;
+padding: 30px;
+border: 1px solid #e2ebdf;
+border-radius: 14px;
+box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
+}
+
+.form-group {
+margin-bottom: 20px;
+}
+
+.form-group label {
+display: block;
+font-weight: bold;
+color: #315a35;
+margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group textarea {
+display: block;
+width: 100%;
+box-sizing: border-box;
+padding: 13px;
+border: 1px solid #cddac8;
+border-radius: 7px;
+font: inherit;
+background: #ffffff;
+color: #263b29;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+outline: 2px solid #79a96c;
+border-color: #398544;
+}
+
+.form-group textarea {
+resize: vertical;
+}
+
+.contact-submit {
+border: none;
+cursor: pointer;
+font: inherit;
+}
+
+.success-message {
+padding: 14px;
+margin-bottom: 20px;
+background: #e0f4df;
+color: #225e26;
+border-radius: 7px;
+}
+
+.error-message {
+padding: 14px;
+margin-bottom: 20px;
+background: #fde8e7;
+color: #9a2828;
+border-radius: 7px;
+}
+
+/* RESPONSIVE CONTACT LAYOUT */
+
+@media (max-width: 800px) {
+.contact-section {
+grid-template-columns: 1fr;
+padding: 40px 6%;
+}
+
+
+.contact-form-container {
+    padding: 22px;
+}
+
+.about-hero {
+    padding: 45px 6%;
+}
+
+
+}
+
+/* DAY 12: CROP RECOMMENDATION PAGE */
+
+.crop-hero {
+background: linear-gradient(135deg, #e8f4df, #f8fbf5);
+padding: 55px 8%;
+text-align: center;
+}
+
+.crop-hero-content {
+max-width: 780px;
+margin: auto;
+}
+
+.crop-hero h1 {
+color: #214d2b;
+font-size: clamp(34px, 5vw, 48px);
+margin: 10px 0 15px;
+}
+
+.crop-hero h1 span {
+color: #398544;
+}
+
+.crop-hero p {
+color: #59665b;
+line-height: 1.8;
+}
+
+.crop-section {
+padding: 55px 8%;
+background: #f8faf6;
+}
+
+.crop-form-container {
+max-width: 950px;
+margin: auto;
+padding: 35px;
+background: #ffffff;
+border: 1px solid #e2ebdf;
+border-radius: 16px;
+box-shadow: 0 10px 35px rgba(27, 75, 35, 0.08);
+}
+
+.crop-form-heading {
+text-align: center;
+margin-bottom: 35px;
+}
+
+.crop-form-heading h2 {
+color: #214d2b;
+font-size: 27px;
+}
+
+.crop-form-heading p {
+color: #687468;
+}
+
+.crop-input-grid {
+display: grid;
+grid-template-columns: repeat(2, minmax(0, 1fr));
+gap: 10px 25px;
+}
+
+.crop-input-grid .form-group {
+margin-bottom: 18px;
+}
+
+.crop-input-grid input {
+width: 100%;
+box-sizing: border-box;
+padding: 13px;
+border: 1px solid #cddac8;
+border-radius: 7px;
+font: inherit;
+background: #ffffff;
+}
+
+.crop-input-grid input:focus {
+outline: 2px solid #79a96c;
+border-color: #398544;
+}
+
+.crop-input-grid small {
+display: block;
+margin-top: 7px;
+color: #718071;
+font-size: 12px;
+}
+
+.rainfall-field {
+grid-column: 1 / -1;
+}
+
+.crop-submit {
+width: 100%;
+border: none;
+cursor: pointer;
+font: inherit;
+margin-top: 15px;
+padding: 16px;
+}
+
+.crop-note {
+text-align: center;
+font-size: 13px;
+color: #687468;
+line-height: 1.7;
+margin-top: 20px;
+}
+
+@media (max-width: 650px) {
+.crop-input-grid {
+grid-template-columns: 1fr;
+}
+
+
+.rainfall-field {
+    grid-column: auto;
+}
+
+.crop-form-container {
+    padding: 22px;
+}
+
+.crop-section {
+    padding: 35px 5%;
+}
+
+
+}
+
+/* DAY 13: PLANT DISEASE DETECTION */
+
+.disease-hero {
+padding: 55px 8%;
+text-align: center;
+background: linear-gradient(135deg, #e8f4df, #f8fbf5);
+}
+
+.disease-hero-content {
+max-width: 780px;
+margin: auto;
+}
+
+.disease-hero h1 {
+color: #214d2b;
+font-size: clamp(34px, 5vw, 48px);
+margin: 10px 0 15px;
+}
+
+.disease-hero h1 span {
+color: #398544;
+}
+
+.disease-hero p {
+color: #59665b;
+line-height: 1.8;
+}
+
+.disease-section {
+padding: 55px 8%;
+background: #f8faf6;
+}
+
+.disease-container {
+max-width: 760px;
+margin: auto;
+padding: 35px;
+background: #ffffff;
+border: 1px solid #e2ebdf;
+border-radius: 16px;
+box-shadow: 0 10px 35px rgba(27, 75, 35, 0.08);
+}
+
+.disease-heading {
+text-align: center;
+margin-bottom: 30px;
+}
+
+.disease-icon {
+font-size: 42px;
+}
+
+.disease-heading h2 {
+color: #214d2b;
+margin-bottom: 10px;
+}
+
+.disease-heading p {
+color: #687468;
+line-height: 1.7;
+}
+
+/* IMAGE UPLOAD BOX */
+
+.upload-box {
+display: block;
+position: relative;
+padding: 40px 20px;
+border: 2px dashed #9ebd91;
+border-radius: 12px;
+text-align: center;
+background: #f7fbf4;
+cursor: pointer;
+transition: background 0.2s, border-color 0.2s;
+}
+
+.upload-box:hover {
+background: #eef7e8;
+border-color: #398544;
+}
+
+.upload-box.has-image {
+padding: 25px 15px;
+}
+
+.upload-symbol {
+font-size: 48px;
+margin-bottom: 10px;
+}
+
+.upload-box h3 {
+color: #285b31;
+margin: 10px 0;
+}
+
+.upload-box p {
+color: #59665b;
+}
+
+.upload-format {
+display: block;
+margin-top: 15px;
+font-size: 12px;
+color: #718071;
+}
+
+.upload-box input[type="file"] {
+display: block;
+width: 100%;
+max-width: 320px;
+margin: 20px auto 0;
+cursor: pointer;
+}
+
+/* IMAGE PREVIEW */
+
+.preview-container {
+margin-top: 25px;
+text-align: center;
+}
+
+.preview-container[hidden],
+#uploadPrompt[hidden] {
+display: none !important;
+}
+
+.preview-container h3 {
+color: #285b31;
+}
+
+.preview-container img {
+display: block;
+width: 100%;
+max-width: 420px;
+max-height: 350px;
+object-fit: contain;
+margin: 15px auto;
+border-radius: 10px;
+background: #f0f3ed;
+border: 1px solid #e2ebdf;
+}
+
+.image-name {
+color: #59665b;
+font-size: 14px;
+overflow-wrap: anywhere;
+}
+
+.remove-image-btn {
+padding: 10px 16px;
+border: 1px solid #d9a5a5;
+border-radius: 7px;
+background: #fff4f4;
+color: #a32d2d;
+cursor: pointer;
+}
+
+.remove-image-btn:hover {
+background: #ffe7e7;
+}
+
+/* DETECT BUTTON */
+
+.detect-btn {
+display: block;
+width: 100%;
+margin-top: 25px;
+border: none;
+cursor: pointer;
+font: inherit;
+padding: 15px;
+}
+
+.disease-note {
+text-align: center;
+color: #687468;
+font-size: 13px;
+line-height: 1.7;
+margin-top: 20px;
+}
+
+/* INFORMATION SECTION */
+
+.disease-info-section {
+padding: 60px 8%;
+background: #ffffff;
+}
+
+/* MOBILE LAYOUT */
+
+@media (max-width: 650px) {
+
+
+.disease-section {
+    padding: 35px 5%;
+}
+
+.disease-container {
+    padding: 22px;
+}
+
+.disease-hero {
+    padding: 40px 6%;
+}
+
+.disease-info-section {
+    padding: 40px 6%;
+}
+
+
+}
+
+/* LOGIN PAGE */
+
+.login-section {
+    min-height: 75vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
+    background: #f1f8f2;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 430px;
+    padding: 35px;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.10);
+}
+
+.login-container h1 {
+    text-align: center;
+    color: #245b35;
+    margin-bottom: 10px;
+}
+
+.login-container > p {
+    text-align: center;
+    color: #666666;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333333;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cccccc;
+    border-radius: 7px;
+    box-sizing: border-box;
+    font-size: 15px;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #2e7d46;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 7px;
+    background: #2e7d46;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.login-btn:hover {
+    background: #205b32;
+}
+
+.login-container .login-note {
+    margin-top: 20px;
+    margin-bottom: 0;
+    font-size: 13px;
+}
+
+.error-message {
+    color: #b42318;
+    background: #fef3f2;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+/* ==================================
+   FULL-SCREEN WEBSITE FIX
+================================== */
+
+html {
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-color: #f7faf7;
+    overflow-x: hidden;
+}
+
+/* Main page area */
+
+main {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Make page sections use the available width */
+
+section {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Keep the navigation full-width */
+
+.navbar {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Keep the footer at the bottom of short pages */
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+/* Responsive layout */
+
+@media (max-width: 768px) {
+    .nav-container {
+        flex-wrap: wrap;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+/* ==========================================
+   DAY 55 - MOBILE RESPONSIVE DESIGN
+========================================== */
+
+
+/* TABLETS AND SMALL LAPTOPS */
+
+@media screen and (max-width: 992px) {
+
+    .charts-container {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0 20px;
+    }
+
+    .admin-container {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .admin-card-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .container {
+        width: 95%;
+    }
+
+}
+
+
+/* TABLETS */
+
+@media screen and (max-width: 768px) {
+
+    /* Navbar */
+
+    nav,
+    .navbar {
+        flex-wrap: wrap;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+
+
+    /* Forms */
+
+    form {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    input,
+    select,
+    textarea,
+    button {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+
+    /* Dashboard */
+
+    .charts-container {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-card-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+
+    /* Cards */
+
+    .card {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+}
+
+
+/* MOBILE PHONES */
+
+@media screen and (max-width: 576px) {
+
+    /* General */
+
+    body {
+        overflow-x: hidden;
+    }
+
+    h1 {
+        font-size: 25px;
+    }
+
+    h2 {
+        font-size: 21px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+
+    /* Navbar */
+
+    nav,
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+        padding: 12px;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .nav-links a {
+        font-size: 14px;
+    }
+
+
+    /* Forms */
+
+    form {
+        padding: 15px;
+        margin: 10px auto;
+    }
+
+    input,
+    select,
+    textarea {
+        width: 100%;
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+    }
+
+
+    /* Dashboard */
+
+    .admin-container {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .admin-card-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .charts-container {
+        grid-template-columns: 1fr;
+        margin: 20px auto;
+        padding: 0 10px;
+    }
+
+    .chart-card {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 15px;
+    }
+
+
+    /* Cards */
+
+    .card,
+    .admin-card {
+        width: 100%;
+        margin: 10px 0;
+        padding: 15px;
+        box-sizing: border-box;
+    }
+
+
+    /* Tables */
+
+    table {
+        font-size: 12px;
+    }
+
+    .table-container {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+
+    /* Images */
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+}
+
+/* DAY 59 - UNCERTAIN DISEASE RESULT */
+
+.uncertain-result {
+    max-width: 650px;
+    margin: 50px auto;
+    padding: 35px;
+    text-align: center;
+    background: #fff8e6;
+    border: 2px solid #f0c36d;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.uncertain-result h2 {
+    color: #b7791f;
+    margin-bottom: 20px;
+}
+
+.uncertain-result p {
+    color: #444;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.uncertain-result a {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 22px;
+    background: #2e7d32;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+}
+
+.uncertain-result a:hover {
+    background: #1b5e20;
+}

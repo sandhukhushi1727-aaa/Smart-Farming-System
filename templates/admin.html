@@ -1,0 +1,204 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="admin-container">
+
+    <h1>🔐 Admin Dashboard</h1>
+
+    <p class="welcome-text">
+        Welcome, {{ session.get('user_name') }}!
+    </p>
+
+    <h2>Smart Farming System Overview</h2>
+
+    <!-- ADMIN STATISTICS -->
+
+    <div class="admin-card-container">
+
+        <!-- Total Users -->
+        <div class="admin-card">
+            <div class="admin-icon">👥</div>
+            <h3>Total Users</h3>
+            <p class="admin-number">{{ total_users }}</p>
+        </div>
+
+        <!-- Total Predictions -->
+        <div class="admin-card">
+            <div class="admin-icon">📊</div>
+            <h3>Total Predictions</h3>
+            <p class="admin-number">{{ total_predictions }}</p>
+        </div>
+
+        <!-- Crop Predictions -->
+        <div class="admin-card">
+            <div class="admin-icon">🌾</div>
+            <h3>Crop Predictions</h3>
+            <p class="admin-number">{{ crop_predictions }}</p>
+        </div>
+
+        <!-- Disease Predictions -->
+        <div class="admin-card">
+            <div class="admin-icon">🍃</div>
+            <h3>Disease Predictions</h3>
+            <p class="admin-number">{{ disease_predictions }}</p>
+        </div>
+
+    </div>
+
+            <!-- Disease Predictions -->
+        <div class="admin-card">
+            <div class="admin-icon">🍃</div>
+            <h3>Disease Predictions</h3>
+            <p class="admin-number">{{ disease_predictions }}</p>
+        </div>
+
+    </div>
+
+    <!-- MANAGE USERS BUTTON -->
+
+    <div style="margin-top: 35px;">
+
+        <a href="{{ url_for('admin_users') }}"
+           style="
+           display: inline-block;
+           background: #1f5d38;
+           color: white;
+           padding: 14px 25px;
+           border-radius: 8px;
+           text-decoration: none;
+           font-weight: bold;
+           ">
+
+            👥 Manage Users
+
+        </a>
+
+    </div>
+
+</div>
+
+<!-- PREDICTION MANAGEMENT BUTTON -->
+
+<div style="margin-top: 20px;">
+
+    <a href="{{ url_for('admin_predictions') }}"
+       style="
+       display: inline-block;
+       background: #2e7d32;
+       color: white;
+       padding: 14px 25px;
+       border-radius: 8px;
+       text-decoration: none;
+       font-weight: bold;
+       ">
+
+        📊 Manage Predictions
+
+    </a>
+
+</div>
+
+<!-- DISEASE MANAGEMENT BUTTON -->
+
+<div style="margin-top: 20px;">
+
+    <a href="{{ url_for('admin_diseases') }}"
+       style="
+       display: inline-block;
+       background: #2e7d32;
+       color: white;
+       padding: 14px 25px;
+       border-radius: 8px;
+       text-decoration: none;
+       font-weight: bold;
+       ">
+
+        🦠 Manage Diseases
+
+    </a>
+
+</div>
+
+</div>
+
+
+<style>
+
+.admin-container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.admin-container h1 {
+    color: #1f5d38;
+    font-size: 32px;
+}
+
+.welcome-text {
+    color: #555;
+    font-size: 17px;
+}
+
+.admin-container h2 {
+    margin-top: 30px;
+    color: #333;
+}
+
+.admin-card-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    margin-top: 35px;
+}
+
+.admin-card {
+    background: white;
+    padding: 30px 20px;
+    border-radius: 15px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.10);
+    border-bottom: 4px solid #2e7d32;
+    transition: 0.3s ease;
+}
+
+.admin-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+}
+
+.admin-icon {
+    font-size: 42px;
+    margin-bottom: 12px;
+}
+
+.admin-card h3 {
+    color: #1f5d38;
+    font-size: 19px;
+}
+
+.admin-number {
+    font-size: 32px;
+    font-weight: bold;
+    color: #2e7d32;
+    margin-top: 15px;
+}
+
+/* Responsive Design */
+
+@media(max-width: 600px) {
+
+    .admin-card-container {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-container h1 {
+        font-size: 25px;
+    }
+
+}
+
+</style>
+
+{% endblock %}

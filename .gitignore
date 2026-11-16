@@ -1,16 +1,28 @@
+# Python
 __pycache__/
 *.pyc
-
 .venv/
 venv/
 
+# Environment variables and secrets
 .env
+.env.*
 
+# Uploaded files
 uploads/
+
+# Large training datasets
 datasets/
 
-models/*.keras
-models/*.h5
-models/*.pkl
+# Database backup - may contain personal information
+database/*.sql
 
+# VS Code
 .vscode/
+
+# Temporary files
+*.log
+.DS_Store
+
+leaf.JPG
+/models/

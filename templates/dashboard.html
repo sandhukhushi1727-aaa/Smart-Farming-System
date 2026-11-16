@@ -1,0 +1,618 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard | Smart Farming System{% endblock %}
+
+{% block content %}
+
+<style>
+
+.dashboard-container {
+    padding: 40px 20px;
+    background: #f4f8f3;
+    min-height: 80vh;
+}
+
+/* HEADER */
+
+.dashboard-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.dashboard-header h1 {
+    color: #1f5d38;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.dashboard-header p {
+    color: #666;
+    font-size: 16px;
+}
+
+/* STATISTICS GRID */
+
+.stats-container {
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+/* STATISTICS CARDS */
+
+.stat-card {
+    background: white;
+    padding: 30px 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    transition: transform 0.3s;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.stat-card h3 {
+    color: #555;
+    font-size: 17px;
+    margin-bottom: 12px;
+}
+
+.stat-number {
+    color: #1f5d38;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+/* QUICK LINKS */
+
+.dashboard-links {
+    max-width: 1100px;
+    margin: 35px auto;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.dashboard-links a {
+    text-decoration: none;
+    background: #1f5d38;
+    color: white;
+    padding: 13px 25px;
+    border-radius: 7px;
+    transition: 0.3s;
+}
+
+.dashboard-links a:hover {
+    background: #16452a;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media(max-width: 600px) {
+
+    .stats-container {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-header h1 {
+        font-size: 25px;
+    }
+}
+
+/* ==================================
+   DASHBOARD CHARTS
+================================== */
+
+.charts-container {
+    max-width: 1100px;
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.chart-card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
+
+.chart-card h2 {
+    color: #1f5d38;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.chart-wrapper {
+    position: relative;
+    height: 320px;
+}
+
+@media(max-width: 750px) {
+    .charts-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==================================
+   DASHBOARD QUICK ACCESS CARDS
+================================== */
+
+.dashboard-cards {
+    max-width: 1100px;
+    margin: 35px auto;
+    padding: 0 15px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.dashboard-card {
+    background: white;
+    padding: 25px 15px;
+    border-radius: 15px;
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    transition: 0.3s ease;
+    border-bottom: 4px solid #2e7d32;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.dashboard-card .icon {
+    font-size: 40px;
+    margin-bottom: 12px;
+}
+
+.dashboard-card h3 {
+    color: #1f5d38;
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.dashboard-card p {
+    font-size: 13px;
+    color: #666;
+}
+
+/* ==================================
+   RESPONSIVE DASHBOARD
+================================== */
+
+@media (max-width: 900px) {
+    .dashboard-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+    .dashboard-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-card {
+        padding: 20px;
+    }
+}
+
+</style>
+
+
+<div class="dashboard-container">
+
+    <!-- DASHBOARD HEADER -->
+
+    <div class="dashboard-header">
+
+        <h1>Welcome, {{ name }}!</h1>
+
+        <p>
+            Your Smart Farming System Dashboard
+        </p>
+
+    </div>
+
+
+    <!-- STATISTICS CARDS -->
+
+    <div class="stats-container">
+
+
+        <!-- TOTAL CROP PREDICTIONS -->
+
+        <div class="stat-card">
+
+            <div class="stat-icon">🌾</div>
+
+            <h3>Total Crop Predictions</h3>
+
+            <div class="stat-number">
+                {{ total_crop_predictions }}
+            </div>
+
+        </div>
+
+
+        <!-- TOTAL DISEASE PREDICTIONS -->
+
+        <div class="stat-card">
+
+            <div class="stat-icon">🍃</div>
+
+            <h3>Total Disease Predictions</h3>
+
+            <div class="stat-number">
+                {{ total_disease_predictions }}
+            </div>
+
+        </div>
+
+
+        <!-- HEALTHY PLANTS -->
+
+        <div class="stat-card">
+
+            <div class="stat-icon">🌱</div>
+
+            <h3>Healthy Plants</h3>
+
+            <div class="stat-number">
+                {{ healthy_plants }}
+            </div>
+
+        </div>
+
+
+        <!-- DISEASED PLANTS -->
+
+        <div class="stat-card">
+
+            <div class="stat-icon">⚠️</div>
+
+            <h3>Diseased Plants</h3>
+
+            <div class="stat-number">
+                {{ diseased_plants }}
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- QUICK NAVIGATION -->
+
+    <div class="dashboard-links">
+
+        <a href="{{ url_for('crop_recommendation') }}">
+            Crop Recommendation
+        </a>
+
+        <a href="{{ url_for('disease_detection') }}">
+            Disease Detection
+        </a>
+
+        <a href="{{ url_for('history') }}">
+            View History
+        </a>
+
+    </div>
+
+</div>
+
+<!-- ==================================
+     DASHBOARD CHARTS
+================================== -->
+
+<div class="charts-container" id="analytics">
+
+    <!-- CROP RECOMMENDATION CHART -->
+
+    <div class="chart-card">
+
+        <h2>🌾 Crop Recommendation Distribution</h2>
+
+        <div class="chart-wrapper">
+
+            <canvas id="cropChart"></canvas>
+
+        </div>
+
+    </div>
+
+
+    <!-- DISEASE DETECTION CHART -->
+
+    <div class="chart-card">
+
+        <h2>🍃 Disease Detection Distribution</h2>
+
+        <div class="chart-wrapper">
+
+            <canvas id="diseaseChart"></canvas>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ==================================
+     CHART.JS LIBRARY
+================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<!-- ==================================
+     CHART DATA + JAVASCRIPT
+================================== -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    // ==================================
+    // CROP CHART DATA
+    // ==================================
+
+    const cropLabels = {{ crop_distribution | map(attribute='recommended_crop') | list | tojson }};
+
+    const cropValues = {{ crop_distribution | map(attribute='total') | list | tojson }};
+
+
+    // ==================================
+    // DISEASE CHART DATA
+    // ==================================
+
+    const diseaseLabels = {{ disease_distribution | map(attribute='predicted_disease') | list | tojson }};
+
+    const diseaseValues = {{ disease_distribution | map(attribute='total') | list | tojson }};
+
+
+    // ==================================
+    // CROP RECOMMENDATION BAR CHART
+    // ==================================
+
+    const cropCanvas = document.getElementById("cropChart");
+
+    new Chart(cropCanvas, {
+
+        type: "bar",
+
+        data: {
+
+            labels: cropLabels,
+
+            datasets: [{
+
+                label: "Number of Recommendations",
+
+                data: cropValues,
+
+                backgroundColor: "rgba(46, 125, 50, 0.75)",
+
+                borderColor: "rgba(27, 94, 32, 1)",
+
+                borderWidth: 1,
+
+                borderRadius: 6
+
+            }]
+
+        },
+
+        options: {
+
+            responsive: true,
+
+            maintainAspectRatio: false,
+
+            plugins: {
+
+                legend: {
+                    display: false
+                },
+
+                tooltip: {
+                    enabled: true
+                }
+
+            },
+
+            scales: {
+
+                y: {
+
+                    beginAtZero: true,
+
+                    ticks: {
+                        precision: 0
+                    },
+
+                    title: {
+                        display: true,
+                        text: "Number of Predictions"
+                    }
+
+                },
+
+                x: {
+
+                    title: {
+                        display: true,
+                        text: "Crop Name"
+                    }
+
+                }
+
+            }
+
+        }
+
+    });
+
+
+    // ==================================
+    // DISEASE DETECTION BAR CHART
+    // ==================================
+
+    const diseaseCanvas = document.getElementById("diseaseChart");
+
+    new Chart(diseaseCanvas, {
+
+        type: "bar",
+
+        data: {
+
+            labels: diseaseLabels,
+
+            datasets: [{
+
+                label: "Number of Detections",
+
+                data: diseaseValues,
+
+                backgroundColor: "rgba(255, 152, 0, 0.75)",
+
+                borderColor: "rgba(230, 126, 34, 1)",
+
+                borderWidth: 1,
+
+                borderRadius: 6
+
+            }]
+
+        },
+
+        options: {
+
+            responsive: true,
+
+            maintainAspectRatio: false,
+
+            plugins: {
+
+                legend: {
+                    display: false
+                },
+
+                tooltip: {
+                    enabled: true
+                }
+
+            },
+
+            scales: {
+
+                y: {
+
+                    beginAtZero: true,
+
+                    ticks: {
+                        precision: 0
+                    },
+
+                    title: {
+                        display: true,
+                        text: "Number of Predictions"
+                    }
+
+                },
+
+                x: {
+
+                    title: {
+                        display: true,
+                        text: "Disease Name"
+                    }
+
+                }
+
+            }
+
+        }
+
+    });
+
+});
+
+</script>
+
+<!-- DASHBOARD QUICK ACCESS CARDS -->
+
+<div class="dashboard-cards">
+
+    <!-- Crop Predictions -->
+    <a href="{{ url_for('crop_recommendation') }}"
+       class="dashboard-card">
+
+        <div class="icon">🌾</div>
+
+        <h3>Crop Predictions</h3>
+
+        <p>Get suitable crop recommendations using soil and weather data.</p>
+
+    </a>
+
+
+    <!-- Disease Predictions -->
+    <a href="{{ url_for('disease_detection') }}"
+       class="dashboard-card">
+
+        <div class="icon">🍃</div>
+
+        <h3>Disease Predictions</h3>
+
+        <p>Detect plant diseases by uploading leaf images.</p>
+
+    </a>
+
+
+    <!-- Account -->
+    <a href="{{ url_for('history') }}"
+       class="dashboard-card">
+
+        <div class="icon">👨‍🌾</div>
+
+        <h3>Account</h3>
+
+        <p>View your previous predictions and account activity.</p>
+
+    </a>
+
+
+    <!-- Analytics -->
+    <a href="#analytics"
+       class="dashboard-card">
+
+        <div class="icon">📊</div>
+
+        <h3>Analytics</h3>
+
+        <p>Explore crop and disease prediction statistics through charts.</p>
+
+    </a>
+
+</div>
+
+{% endblock %}

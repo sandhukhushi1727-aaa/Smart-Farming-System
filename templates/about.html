@@ -1,0 +1,244 @@
+{% extends "base.html" %}
+
+{% block title %}About Us | Smart Farming System{% endblock %}
+
+{% block content %}
+
+<!-- HERO SECTION -->
+
+<section class="about-hero">
+    <div class="about-hero-content">
+        <span class="eyebrow">ABOUT OUR PROJECT</span>
+
+```
+    <h1>Transforming Agriculture with <span>AI Technology</span></h1>
+
+    <p>
+        Our Smart Farming System uses Artificial Intelligence and
+        Machine Learning to support crop selection and plant disease
+        identification.
+    </p>
+
+    <a href="{{ url_for('home') }}" class="btn">
+        Explore Home Page →
+    </a>
+</div>
+```
+
+</section>
+
+<!-- AGRICULTURE PROBLEMS -->
+
+<section class="home-section about-problems">
+    <div class="section-heading">
+        <span class="eyebrow">THE CHALLENGE</span>
+
+```
+    <h2>Problems in Agriculture</h2>
+
+    <p>
+        Agriculture is affected by several challenges that can
+        influence crop health, productivity, and farmers' income.
+    </p>
+</div>
+
+<div class="home-cards">
+
+    <div class="home-card">
+        <div class="feature-icon">🌦️</div>
+        <h3>Changing Weather</h3>
+        <p>
+            Changes in rainfall, temperature, and humidity can
+            affect crop growth and farming decisions.
+        </p>
+    </div>
+
+    <div class="home-card">
+        <div class="feature-icon">🍂</div>
+        <h3>Plant Diseases</h3>
+        <p>
+            Plant diseases can damage crops. Identifying possible
+            diseases early can help farmers seek suitable advice.
+        </p>
+    </div>
+
+    <div class="home-card">
+        <div class="feature-icon">🌱</div>
+        <h3>Crop Selection</h3>
+        <p>
+            Choosing crops without considering soil and climate
+            conditions can lead to unsuitable farming decisions.
+        </p>
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- AI IN AGRICULTURE -->
+
+<section class="home-section about-ai">
+    <div class="section-heading">
+        <span class="eyebrow">SMART TECHNOLOGY</span>
+
+```
+    <h2>How AI Helps Agriculture</h2>
+
+    <p>
+        Artificial Intelligence can analyse data and images to
+        support agricultural decisions. Machine Learning models
+        can learn patterns from datasets and use them to make
+        predictions on new inputs.
+    </p>
+</div>
+
+<div class="home-cards">
+
+    <div class="home-card">
+        <div class="feature-icon">🌾</div>
+        <h3>Crop Recommendation</h3>
+        <p>
+            A trained Machine Learning model can analyse information
+            such as nitrogen, phosphorus, potassium, temperature,
+            humidity, soil pH, and rainfall to recommend a suitable
+            crop from its supported categories.
+        </p>
+    </div>
+
+    <div class="home-card">
+        <div class="feature-icon">🔬</div>
+        <h3>Plant Disease Detection</h3>
+        <p>
+            An image-classification model can analyse an uploaded
+            plant leaf image and predict a possible disease or
+            healthy-leaf category supported by its training data.
+        </p>
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- PROJECT OBJECTIVES -->
+
+<section class="home-section about-objectives">
+    <div class="section-heading">
+        <span class="eyebrow">OUR PURPOSE</span>
+
+```
+    <h2>Project Objectives</h2>
+</div>
+
+<div class="benefits-list">
+    <p>✓ Recommend suitable crops using soil and environmental data.</p>
+
+    <p>✓ Help identify possible plant diseases from leaf images.</p>
+
+    <p>✓ Apply Artificial Intelligence and Machine Learning to agriculture.</p>
+
+    <p>✓ Present predictions through a simple, user-friendly website.</p>
+
+    <p>✓ Encourage informed farming decisions using data-driven tools.</p>
+</div>
+```
+
+</section>
+
+<!-- TECHNOLOGIES -->
+
+<section class="home-section about-technologies">
+    <div class="section-heading">
+        <span class="eyebrow">OUR TECH STACK</span>
+
+```
+    <h2>Technologies Used</h2>
+
+    <p>
+        The project combines web development with Machine Learning
+        to build an accessible smart farming application.
+    </p>
+</div>
+
+<div class="home-cards">
+
+    <div class="home-card">
+        <h3>Python</h3>
+        <p>Used for application logic and Machine Learning.</p>
+    </div>
+
+    <div class="home-card">
+        <h3>Flask</h3>
+        <p>Connects the website interface with Python functionality.</p>
+    </div>
+
+    <div class="home-card">
+        <h3>HTML & CSS</h3>
+        <p>Build the website structure and visual design.</p>
+    </div>
+
+    <div class="home-card">
+        <h3>JavaScript</h3>
+        <p>Adds interactive behaviour to the website.</p>
+    </div>
+
+    <div class="home-card">
+        <h3>Machine Learning</h3>
+        <p>Supports crop recommendation and leaf-image classification.</p>
+    </div>
+
+    <div class="home-card">
+        <h3>MySQL</h3>
+        <p>Can store application data when database functionality is implemented.</p>
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- BENEFITS -->
+
+<section class="home-section about-benefits">
+    <div class="section-heading">
+        <span class="eyebrow">WHY THIS PROJECT?</span>
+
+```
+    <h2>Benefits of Smart Farming</h2>
+</div>
+
+<div class="benefits-list">
+    <p>✓ Provides data-based crop selection support.</p>
+
+    <p>✓ Helps users check possible plant disease categories.</p>
+
+    <p>✓ Presents agricultural information in a simple format.</p>
+
+    <p>✓ Demonstrates how AI can be applied to real-world challenges.</p>
+
+    <p>✓ Supports, rather than replaces, expert agricultural advice.</p>
+</div>
+```
+
+</section>
+
+<!-- CALL TO ACTION -->
+
+<section class="cta-section">
+    <h2>Let's Build a Smarter Agricultural Future</h2>
+
+```
+<p>
+    Explore our project and discover how technology can support
+    better-informed farming decisions.
+</p>
+
+<a href="{{ url_for('contact') }}" class="btn">
+    Contact Us →
+</a>
+```
+
+</section>
+
+{% endblock %}

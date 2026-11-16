@@ -1,0 +1,206 @@
+{% extends "base.html" %}
+
+{% block title %}Plant Disease Detection | Smart Farming System{% endblock %}
+
+{% block content %}
+
+<!-- PAGE HERO -->
+
+<section class="disease-hero">
+    <div class="disease-hero-content">
+        <span class="eyebrow">AI-POWERED PLANT CARE</span>
+
+```
+    <h1>Plant Disease <span>Detection</span></h1>
+
+    <p>
+        Upload a clear image of a plant leaf to get started.
+        Image-based disease prediction will be added when our
+        Machine Learning model is integrated.
+    </p>
+</div>
+```
+
+</section>
+
+<!-- UPLOAD SECTION -->
+
+<section class="disease-section">
+
+```
+<div class="disease-container">
+
+    <div class="disease-heading">
+        <div class="disease-icon">🌿</div>
+
+        <h2>Upload a Plant Leaf Image</h2>
+
+        <p>
+            Choose an image from your device and preview it
+            before submitting.
+        </p>
+    </div>
+
+
+    {% if success %}
+        <div class="success-message" role="status">
+            {{ success }}
+        </div>
+    {% endif %}
+
+    {% if error %}
+        <div class="error-message" role="alert">
+            {{ error }}
+        </div>
+    {% endif %}
+
+
+    <form
+        id="diseaseForm"
+        action="{{ url_for('disease_detection') }}"
+        method="POST"
+        enctype="multipart/form-data"
+    >
+
+        <!-- IMAGE UPLOAD -->
+        <form method="POST"
+      action="/disease-detection"
+      enctype="multipart/form-data">
+
+    <label for="leaf_image">
+        Upload Tomato Leaf Image
+    </label>
+
+    <input
+        type="file"
+        id="leaf_image"
+        name="leaf_image"
+        accept=".jpg,.jpeg,.png"
+        required
+    >
+
+    <button type="submit">
+        Upload Image
+    </button>
+
+</form>
+
+{% if uploaded_image %}
+
+    <h3>Image Uploaded Successfully!</h3>
+
+    <p>Uploaded Image: {{ uploaded_image }}</p>
+
+    <img
+        src="{{ url_for('uploaded_file', filename=uploaded_image) }}"
+        width="250"
+        alt="Uploaded tomato leaf"
+    >
+
+{% endif %}
+
+
+        <!-- IMAGE PREVIEW -->
+        <div class="preview-container" id="previewContainer" hidden>
+
+            <h3>Image Preview</h3>
+
+            <img
+                id="imagePreview"
+                src=""
+                alt="Preview of the selected plant leaf"
+            >
+
+            <p id="imageName" class="image-name"></p>
+
+            <button
+                type="button"
+                id="removeImage"
+                class="remove-image-btn"
+            >
+                ✕ Remove Image
+            </button>
+
+        </div>
+
+
+        <!-- SUBMIT BUTTON -->
+        <button
+            type="submit"
+            id="detectButton"
+            class="btn detect-btn"
+        >
+            🔍 Detect Disease
+        </button>
+
+        <p class="disease-note">
+            This is the user-interface stage. The application
+            does not identify diseases until the trained model
+            is connected.
+        </p>
+
+    </form>
+
+</div>
+```
+
+</section>
+
+<!-- HOW TO USE -->
+
+<section class="disease-info-section">
+
+```
+<div class="section-heading">
+    <span class="eyebrow">SIMPLE PROCESS</span>
+
+    <h2>How to Use This Tool</h2>
+
+    <p>
+        Follow these steps to prepare an image for analysis.
+    </p>
+</div>
+
+<div class="home-cards">
+
+    <div class="home-card">
+        <div class="feature-icon">📁</div>
+
+        <h3>Step 1: Upload</h3>
+
+        <p>
+            Choose a clear photograph of a plant leaf
+            from your device.
+        </p>
+    </div>
+
+    <div class="home-card">
+        <div class="feature-icon">🖼️</div>
+
+        <h3>Step 2: Preview</h3>
+
+        <p>
+            Check the selected image and replace it
+            if necessary.
+        </p>
+    </div>
+
+    <div class="home-card">
+        <div class="feature-icon">🔬</div>
+
+        <h3>Step 3: Submit</h3>
+
+        <p>
+            Submit the image. Disease analysis will be
+            enabled after model integration.
+        </p>
+    </div>
+
+</div>
+```
+
+</section>
+
+<script src="{{ url_for('static', filename='js/disease.js') }}" defer></script>
+
+{% endblock %}

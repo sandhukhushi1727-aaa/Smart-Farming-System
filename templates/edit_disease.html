@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="edit-disease-container">
+
+    <h1>✏️ Edit Disease</h1>
+
+    <form method="POST">
+
+        <label>Disease Name</label>
+
+        <input type="text"
+               name="disease_name"
+               value="{{ disease.disease_name }}"
+               required>
+
+
+        <label>Crop Name</label>
+
+        <input type="text"
+               name="crop_name"
+               value="{{ disease.crop_name or disease.plant_name }}"
+               required>
+
+
+        <label>Symptoms</label>
+
+        <textarea name="symptoms" required>{{ disease.symptoms }}</textarea>
+
+
+        <label>Causes</label>
+
+        <textarea name="causes" required>{{ disease.causes }}</textarea>
+
+
+        <label>Prevention</label>
+
+        <textarea name="prevention" required>{{ disease.prevention }}</textarea>
+
+
+        <label>Management / Treatment</label>
+
+        <textarea name="management" required>{{ disease.management or disease.suggested_treatment }}</textarea>
+
+
+        <button type="submit">💾 Save Changes</button>
+
+        <a href="{{ url_for('admin_diseases') }}">Cancel</a>
+
+    </form>
+
+</div>
+
+
+<style>
+
+.edit-disease-container {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 25px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
+
+.edit-disease-container h1 {
+    text-align: center;
+    color: #1f5d38;
+}
+
+.edit-disease-container label {
+    display: block;
+    margin-top: 15px;
+}
+
+.edit-disease-container input,
+.edit-disease-container textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 7px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+.edit-disease-container textarea {
+    min-height: 90px;
+}
+
+.edit-disease-container button {
+    background: #2e7d32;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.edit-disease-container a {
+    margin-left: 12px;
+    color: #1f5d38;
+}
+
+</style>
+
+{% endblock %}

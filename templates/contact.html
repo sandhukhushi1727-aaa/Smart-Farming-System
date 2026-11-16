@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+
+{% block title %}Contact Us | Smart Farming System{% endblock %}
+
+{% block content %}
+
+<section class="contact-hero">
+    <div class="contact-heading">
+        <span class="eyebrow">GET IN TOUCH</span>
+
+```
+    <h1>Contact <span>Our Team</span></h1>
+
+    <p>
+        Have a question or suggestion about our Smart Farming System?
+        Send us a message using the form below.
+    </p>
+</div>
+```
+
+</section>
+
+<section class="contact-section">
+
+```
+<div class="contact-info">
+    <span class="eyebrow">WE'D LOVE TO HEAR FROM YOU</span>
+
+    <h2>Let's Connect</h2>
+
+    <p>
+        We welcome questions, suggestions, and feedback about our
+        AI-based agriculture project.
+    </p>
+
+    <div class="contact-info-card">
+        <span>🌾</span>
+        <div>
+            <h3>Our Project</h3>
+            <p>Smart Farming System</p>
+        </div>
+    </div>
+
+    <div class="contact-info-card">
+        <span>🤖</span>
+        <div>
+            <h3>Our Focus</h3>
+            <p>AI, Machine Learning, and Agriculture</p>
+        </div>
+    </div>
+</div>
+
+
+<div class="contact-form-container">
+
+    <h2>Send Us a Message</h2>
+
+    {% if success %}
+        <div class="success-message">
+            {{ success }}
+        </div>
+    {% endif %}
+
+    {% if error %}
+        <div class="error-message">
+            {{ error }}
+        </div>
+    {% endif %}
+
+    <form action="{{ url_for('contact') }}" method="POST">
+
+        <div class="form-group">
+            <label for="name">Full Name</label>
+
+            <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Enter your name"
+                required
+                maxlength="100"
+                value="{{ form_data.get('name', '') if form_data else '' }}"
+            >
+        </div>
+
+
+        <div class="form-group">
+            <label for="email">Email Address</label>
+
+            <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Enter your email"
+                required
+                maxlength="254"
+                value="{{ form_data.get('email', '') if form_data else '' }}"
+            >
+        </div>
+
+
+        <div class="form-group">
+            <label for="subject">Subject</label>
+
+            <input
+                type="text"
+                id="subject"
+                name="subject"
+                placeholder="Enter the subject"
+                required
+                maxlength="150"
+                value="{{ form_data.get('subject', '') if form_data else '' }}"
+            >
+        </div>
+
+
+        <div class="form-group">
+            <label for="message">Your Message</label>
+
+            <textarea
+                id="message"
+                name="message"
+                rows="5"
+                placeholder="Write your message here..."
+                required
+                maxlength="3000"
+            >{{ form_data.get('message', '') if form_data else '' }}</textarea>
+        </div>
+
+
+        <button type="submit" class="btn contact-submit">
+            Send Message →
+        </button>
+
+    </form>
+
+</div>
+```
+
+</section>
+
+{% endblock %}

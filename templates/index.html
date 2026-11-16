@@ -1,0 +1,229 @@
+{% extends "base.html" %}
+
+{% block title %}Home | Smart Farming System{% endblock %}
+
+{% block content %}
+
+<!-- 1. HERO SECTION -->
+<section class="hero">
+
+    <div class="hero-content">
+
+        <span class="eyebrow">AI-POWERED AGRICULTURE</span>
+
+        <h1>
+            Grow Smarter with
+            <span>Smart Farming</span>
+        </h1>
+
+        <p>
+            Discover smarter farming with Artificial Intelligence.
+            Get crop recommendations and help identify possible
+            plant diseases with technology.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="{{ url_for('crop_recommendation') }}" class="btn">
+                🌾 Crop Recommendation
+            </a>
+
+            <a href="{{ url_for('about') }}" class="btn btn-outline">
+                Learn More →
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- 2. ABOUT SECTION -->
+<section class="home-section about-section">
+
+    <div class="section-heading">
+
+        <span class="eyebrow">ABOUT OUR PROJECT</span>
+
+        <h2>Technology Meets Agriculture</h2>
+
+        <p>
+            Smart Farming System is an AI-based project designed
+            to support farmers in making informed farming decisions.
+            It combines agricultural information with machine learning
+            to make farming smarter and more accessible.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- 3. FEATURES SECTION -->
+<section class="home-section features-section" id="features">
+
+    <div class="section-heading">
+
+        <span class="eyebrow">WHAT WE OFFER</span>
+
+        <h2>Our Smart Farming Features</h2>
+
+        <p>
+            Explore the tools we are developing to support better
+            agricultural decisions.
+        </p>
+
+    </div>
+
+    <div class="home-cards">
+
+        <!-- Crop Recommendation Card -->
+        <div class="home-card" id="crop-recommendation">
+
+            <div class="feature-icon">🌾</div>
+
+            <h3>Crop Recommendation</h3>
+
+            <p>
+                Enter soil nutrients, temperature, humidity, pH
+                and rainfall information to get a suitable crop
+                recommendation from a machine-learning model.
+            </p>
+
+            <a href="{{ url_for('crop_recommendation') }}"
+               class="text-link">
+                Try Crop Recommendation →
+            </a>
+
+        </div>
+
+
+        <!-- Plant Disease Detection Card -->
+        <div class="home-card" id="plant-disease">
+
+            <div class="feature-icon">🌿</div>
+
+            <h3>Plant Disease Detection</h3>
+
+            <p>
+                Upload a plant leaf image to help identify possible
+                diseases using an image-classification model.
+            </p>
+
+            <a href="{{ url_for('disease_detection') }}"
+               class="text-link">
+                Try Disease Detection →
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- 4. HOW IT WORKS -->
+<section class="home-section how-section" id="how-it-works">
+
+    <div class="section-heading">
+
+        <span class="eyebrow">SIMPLE PROCESS</span>
+
+        <h2>How It Works</h2>
+
+        <p>
+            Our project aims to make smart farming tools easy to use.
+        </p>
+
+    </div>
+
+    <div class="home-cards">
+
+        <div class="home-card process-card">
+
+            <div class="step-number">01</div>
+
+            <h3>Enter Information</h3>
+
+            <p>
+                Provide soil and environmental information
+                for crop recommendation.
+            </p>
+
+        </div>
+
+        <div class="home-card process-card">
+
+            <div class="step-number">02</div>
+
+            <h3>AI Analysis</h3>
+
+            <p>
+                The trained machine-learning model analyses
+                the information you provide.
+            </p>
+
+        </div>
+
+        <div class="home-card process-card">
+
+            <div class="step-number">03</div>
+
+            <h3>View Results</h3>
+
+            <p>
+                Receive the model's prediction to help
+                make an informed farming decision.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- 5. BENEFITS -->
+<section class="home-section benefits-section">
+
+    <div class="section-heading">
+
+        <span class="eyebrow">WHY SMART FARMING?</span>
+
+        <h2>Benefits of Our System</h2>
+
+    </div>
+
+    <div class="benefits-list">
+
+        <p>✓ Data-based crop selection support</p>
+
+        <p>✓ Assistance in identifying possible plant diseases</p>
+
+        <p>✓ Easy-to-understand information</p>
+
+        <p>✓ Technology-assisted farming decisions</p>
+
+    </div>
+
+</section>
+
+
+<!-- 6. CALL TO ACTION -->
+<section class="cta-section">
+
+    <h2>Ready to Explore Smart Farming?</h2>
+
+    <p>
+        Discover how AI and machine learning can support
+        smarter agricultural decisions.
+    </p>
+
+    <a href="{{ url_for('crop_recommendation') }}" class="btn">
+        🌾 Crop Recommendation
+    </a>
+
+</section>
+
+{% endblock %}

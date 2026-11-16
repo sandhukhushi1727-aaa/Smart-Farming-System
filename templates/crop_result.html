@@ -1,0 +1,161 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="crop-result-container">
+    <div class="crop-result-card">
+
+        <div class="crop-icon">🌾</div>
+
+        <h1>Recommended Crop</h1>
+
+        <p class="result-subtitle">
+            Based on the soil and weather values you entered
+        </p>
+
+        <div class="crop-name">
+            {{ crop_name }}
+        </div>
+
+        <div class="confidence-box">
+            <span>Model Confidence</span>
+            <h2>{{ confidence }}%</h2>
+        </div>
+
+        <!-- Prediction Save Status -->
+        {% if saved %}
+            <div class="success-message" role="status">
+                ✅ Your crop prediction has been saved successfully!
+            </div>
+        {% else %}
+            <div class="error-message" role="alert">
+                ⚠️ Your crop was predicted, but we could not save the
+                result to the database. Please try again later.
+            </div>
+        {% endif %}
+
+        <div class="result-details">
+            <h3>Input Details</h3>
+
+            <p><strong>Nitrogen (N):</strong> {{ N }}</p>
+            <p><strong>Phosphorus (P):</strong> {{ P }}</p>
+            <p><strong>Potassium (K):</strong> {{ K }}</p>
+            <p><strong>Temperature:</strong> {{ temperature }} °C</p>
+            <p><strong>Humidity:</strong> {{ humidity }}%</p>
+            <p><strong>Soil pH:</strong> {{ ph }}</p>
+            <p><strong>Rainfall:</strong> {{ rainfall }} mm</p>
+        </div>
+
+        <a href="{{ url_for('crop_recommendation') }}"
+           class="back-button">
+            Try Another Prediction
+        </a>
+
+    </div>
+</section>
+
+<style>
+.crop-result-container {
+    min-height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 35px 15px;
+}
+
+.crop-result-card {
+    width: 100%;
+    max-width: 560px;
+    padding: 30px;
+    text-align: center;
+    background: #ffffff;
+    border-radius: 18px;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12);
+}
+
+.crop-icon {
+    font-size: 55px;
+    margin-bottom: 10px;
+}
+
+.crop-result-card h1 {
+    color: #245c35;
+    margin-bottom: 10px;
+}
+
+.result-subtitle {
+    color: #666666;
+    margin-bottom: 25px;
+}
+
+.crop-name {
+    color: #245c35;
+    font-size: 34px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 20px 0;
+}
+
+.confidence-box {
+    background: #eef7e9;
+    border-radius: 12px;
+    padding: 15px;
+    margin: 20px 0;
+}
+
+.confidence-box span {
+    color: #444444;
+}
+
+.confidence-box h2 {
+    color: #245c35;
+    margin: 8px 0 0;
+}
+
+.success-message {
+    background: #e8f5e9;
+    color: #246b32;
+    padding: 13px;
+    border-radius: 8px;
+    margin: 15px 0;
+    font-weight: 600;
+}
+
+.error-message {
+    background: #fff0f0;
+    color: #b42318;
+    padding: 13px;
+    border-radius: 8px;
+    margin: 15px 0;
+    font-weight: 600;
+}
+
+.result-details {
+    text-align: left;
+    margin-top: 25px;
+    line-height: 1.6;
+}
+
+.result-details h3 {
+    color: #245c35;
+    border-bottom: 1px solid #dddddd;
+    padding-bottom: 8px;
+}
+
+.back-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 22px;
+    background: #245c35;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+}
+
+.back-button:hover {
+    background: #174326;
+}
+</style>
+
+{% endblock %}

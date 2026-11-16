@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="predictions-container">
+
+    <h1>📊 Prediction Management</h1>
+
+    <p>View all crop and disease predictions made by users.</p>
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>User</th>
+                    <th>Prediction Type</th>
+                    <th>Prediction</th>
+                    <th>Confidence</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% for item in predictions %}
+
+                <tr>
+
+                    <td>{{ item.user_name or 'Unknown User' }}</td>
+
+                    <td>
+                        <span class="type-badge">
+                            {{ item.prediction_type }}
+                        </span>
+                    </td>
+
+                    <td>{{ item.prediction }}</td>
+
+                    <td>
+                        {{ item.confidence if item.confidence is not none else 'N/A' }}
+                    </td>
+
+                    <td>
+                        {{ item.prediction_date.strftime('%d-%m-%Y %I:%M %p')
+                           if item.prediction_date else 'N/A' }}
+                    </td>
+
+                </tr>
+
+                {% else %}
+
+                <tr>
+                    <td colspan="5">No prediction records found.</td>
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <a href="{{ url_for('admin') }}" class="back-btn">
+        ← Back to Admin Dashboard
+    </a>
+
+</div>
+
+
+<style>
+
+.predictions-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.predictions-container h1 {
+    color: #1f5d38;
+}
+
+.table-container {
+    overflow-x: auto;
+    margin-top: 30px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 750px;
+}
+
+th, td {
+    padding: 16px;
+    border-bottom: 1px solid #eee;
+}
+
+th {
+    background: #1f5d38;
+    color: white;
+}
+
+tr:hover {
+    background: #f5f9f5;
+}
+
+.type-badge {
+    background: #e8f5e9;
+    color: #1f5d38;
+    padding: 7px 12px;
+    border-radius: 15px;
+    font-size: 13px;
+}
+
+.back-btn {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 12px 22px;
+    background: #1f5d38;
+    color: white;
+    text-decoration: none;
+    border-radius: 7px;
+}
+
+@media(max-width: 600px) {
+    .predictions-container {
+        padding: 10px;
+    }
+}
+
+</style>
+
+{% endblock %}

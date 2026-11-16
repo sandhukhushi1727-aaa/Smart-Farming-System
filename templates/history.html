@@ -1,0 +1,621 @@
+{% extends "base.html" %}
+
+{% block title %}Prediction History | Smart Farming System{% endblock %}
+
+{% block content %}
+
+<style>
+
+.history-page {
+    padding: 40px 20px;
+    background: #f4f8f3;
+    min-height: 80vh;
+}
+
+.history-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.history-header h1 {
+    color: #1f5d38;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.history-header p {
+    color: #666;
+}
+
+/* FILTER SECTION */
+
+.filter-section {
+    background: white;
+    max-width: 1100px;
+    margin: 0 auto 25px;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
+
+.filter-section h2 {
+    color: #1f5d38;
+    margin-bottom: 20px;
+    font-size: 21px;
+}
+
+.filter-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.filter-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #444;
+}
+
+.filter-group input,
+.filter-group select {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.reset-btn {
+    margin-top: 20px;
+    padding: 11px 22px;
+    background: #1f5d38;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.reset-btn:hover {
+    background: #16452a;
+}
+
+/* HISTORY TABLES */
+
+.history-section {
+    background: white;
+    padding: 25px;
+    margin: 25px auto;
+    max-width: 1100px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
+
+.history-section h2 {
+    color: #1f5d38;
+    margin-bottom: 20px;
+    font-size: 23px;
+}
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.history-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.history-table th {
+    background: #1f5d38;
+    color: white;
+    padding: 14px;
+}
+
+.history-table td {
+    padding: 14px;
+    border-bottom: 1px solid #ddd;
+    color: #444;
+}
+
+.history-table tr:hover {
+    background: #f1f8f1;
+}
+
+.confidence {
+    color: #1f7a3d;
+    font-weight: bold;
+}
+
+.no-history {
+    text-align: center;
+    padding: 25px;
+    color: #777;
+}
+
+.empty-filter {
+    display: none;
+    text-align: center;
+    padding: 20px;
+    color: #777;
+}
+
+@media(max-width: 800px) {
+
+    .filter-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media(max-width: 500px) {
+
+    .filter-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .history-header h1 {
+        font-size: 25px;
+    }
+
+}
+
+</style>
+
+
+<div class="history-page">
+
+    <!-- PAGE HEADER -->
+
+    <div class="history-header">
+
+        <h1>Prediction History</h1>
+
+        <p>
+            Search and filter your previous crop recommendations
+            and plant disease predictions.
+        </p>
+
+    </div>
+
+
+    <!-- SEARCH AND FILTER SECTION -->
+
+    <div class="filter-section">
+
+        <h2>Search & Filter History</h2>
+
+        <div class="filter-grid">
+
+            <!-- Prediction Type -->
+
+            <div class="filter-group">
+
+                <label for="typeFilter">
+                    Prediction Type
+                </label>
+
+                <select id="typeFilter">
+
+                    <option value="all">All Predictions</option>
+
+                    <option value="crop">Crop Recommendation</option>
+
+                    <option value="disease">Disease Detection</option>
+
+                </select>
+
+            </div>
+
+
+            <!-- Crop Search -->
+
+            <div class="filter-group">
+
+                <label for="cropFilter">
+                    Search Crop
+                </label>
+
+                <input
+                    type="text"
+                    id="cropFilter"
+                    placeholder="Enter crop name..."
+                >
+
+            </div>
+
+
+            <!-- Disease Search -->
+
+            <div class="filter-group">
+
+                <label for="diseaseFilter">
+                    Search Disease
+                </label>
+
+                <input
+                    type="text"
+                    id="diseaseFilter"
+                    placeholder="Enter disease name..."
+                >
+
+            </div>
+
+
+            <!-- Date Filter -->
+
+            <div class="filter-group">
+
+                <label for="dateFilter">
+                    Select Date
+                </label>
+
+                <input
+                    type="date"
+                    id="dateFilter"
+                >
+
+            </div>
+
+        </div>
+
+
+        <!-- RESET BUTTON -->
+
+        <button
+            type="button"
+            class="reset-btn"
+            onclick="resetFilters()"
+        >
+            Reset Filters
+        </button>
+
+    </div>
+
+
+    <!-- CROP HISTORY -->
+
+    <div class="history-section" id="cropSection">
+
+        <h2>🌾 Crop Recommendation History</h2>
+
+        <div class="table-container">
+
+            <table class="history-table">
+
+                <thead>
+
+                    <tr>
+                        <th>Date</th>
+                        <th>Crop</th>
+                        <th>Confidence</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="cropTableBody">
+
+                    {% if crop_history %}
+
+                        {% for item in crop_history %}
+
+                            <tr
+                                class="history-row"
+                                data-type="crop"
+                                data-name="{{ item.recommended_crop|lower }}"
+                                data-date="{{ item.created_at.strftime('%Y-%m-%d') if item.created_at else '' }}"
+                            >
+
+                                <td>
+                                    {{ item.created_at.strftime('%d/%m/%Y') if item.created_at else 'N/A' }}
+                                </td>
+
+                                <td>
+                                    {{ item.recommended_crop }}
+                                </td>
+
+                                <td class="confidence">
+                                    {{ "%.2f"|format(item.confidence|float) }}%
+                                </td>
+
+                            </tr>
+
+                        {% endfor %}
+
+                    {% else %}
+
+                        <tr>
+
+                            <td colspan="3" class="no-history">
+                                No crop prediction history available.
+                            </td>
+
+                        </tr>
+
+                    {% endif %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <p class="empty-filter" id="cropEmpty">
+            No matching crop records found.
+        </p>
+
+    </div>
+
+
+    <!-- DISEASE HISTORY -->
+
+    <div class="history-section" id="diseaseSection">
+
+        <h2>🍃 Disease Detection History</h2>
+
+        <div class="table-container">
+
+            <table class="history-table">
+
+                <thead>
+
+                    <tr>
+                        <th>Date</th>
+                        <th>Disease</th>
+                        <th>Confidence</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="diseaseTableBody">
+
+                    {% if disease_history %}
+
+                        {% for item in disease_history %}
+
+                            <tr
+                                class="history-row"
+                                data-type="disease"
+                                data-name="{{ item.predicted_disease|lower }}"
+                                data-date="{{ item.created_at.strftime('%Y-%m-%d') if item.created_at else '' }}"
+                            >
+
+                                <td>
+                                    {{ item.created_at.strftime('%d/%m/%Y') if item.created_at else 'N/A' }}
+                                </td>
+
+                                <td>
+                                    {{ item.predicted_disease }}
+                                </td>
+
+                                <td class="confidence">
+                                    {{ "%.2f"|format(item.confidence|float) }}%
+                                </td>
+
+                            </tr>
+
+                        {% endfor %}
+
+                    {% else %}
+
+                        <tr>
+
+                            <td colspan="3" class="no-history">
+                                No disease detection history available.
+                            </td>
+
+                        </tr>
+
+                    {% endif %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <p class="empty-filter" id="diseaseEmpty">
+            No matching disease records found.
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- ==================================
+     JAVASCRIPT SEARCH AND FILTER
+================================== -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const typeFilter = document.getElementById("typeFilter");
+
+    const cropFilter = document.getElementById("cropFilter");
+
+    const diseaseFilter = document.getElementById("diseaseFilter");
+
+    const dateFilter = document.getElementById("dateFilter");
+
+
+    // Apply all filters
+
+    function applyFilters() {
+
+        const selectedType = typeFilter.value;
+
+        const cropSearch = cropFilter.value.toLowerCase().trim();
+
+        const diseaseSearch = diseaseFilter.value.toLowerCase().trim();
+
+        const selectedDate = dateFilter.value;
+
+
+        // Get all history rows
+
+        const rows = document.querySelectorAll(".history-row");
+
+
+        rows.forEach(function (row) {
+
+            const rowType = row.dataset.type;
+
+            const rowName = row.dataset.name;
+
+            const rowDate = row.dataset.date;
+
+
+            // Prediction type filter
+
+            const matchesType =
+                selectedType === "all" ||
+                selectedType === rowType;
+
+
+            // Crop filter
+
+            const matchesCrop =
+                rowType !== "crop" ||
+                rowName.includes(cropSearch);
+
+
+            // Disease filter
+
+            const matchesDisease =
+                rowType !== "disease" ||
+                rowName.includes(diseaseSearch);
+
+
+            // Date filter
+
+            const matchesDate =
+                selectedDate === "" ||
+                rowDate === selectedDate;
+
+
+            // Show or hide row
+
+            if (
+                matchesType &&
+                matchesCrop &&
+                matchesDisease &&
+                matchesDate
+            ) {
+
+                row.style.display = "";
+
+            } else {
+
+                row.style.display = "none";
+
+            }
+
+        });
+
+
+        // Update empty messages
+
+        updateEmptyMessages();
+
+        // Update sections
+
+        updateSections();
+
+    }
+
+
+    // Show empty message when no matching records exist
+
+    function updateEmptyMessages() {
+
+        const cropRows = document.querySelectorAll(
+            "#cropTableBody .history-row"
+        );
+
+        const diseaseRows = document.querySelectorAll(
+            "#diseaseTableBody .history-row"
+        );
+
+
+        const visibleCropRows = Array.from(cropRows).filter(
+            row => row.style.display !== "none"
+        );
+
+
+        const visibleDiseaseRows = Array.from(diseaseRows).filter(
+            row => row.style.display !== "none"
+        );
+
+
+        document.getElementById("cropEmpty").style.display =
+            cropRows.length > 0 && visibleCropRows.length === 0
+                ? "block"
+                : "none";
+
+
+        document.getElementById("diseaseEmpty").style.display =
+            diseaseRows.length > 0 && visibleDiseaseRows.length === 0
+                ? "block"
+                : "none";
+
+    }
+
+
+    // Hide sections based on prediction type
+
+    function updateSections() {
+
+        const selectedType = typeFilter.value;
+
+        document.getElementById("cropSection").style.display =
+            selectedType === "disease" ? "none" : "block";
+
+
+        document.getElementById("diseaseSection").style.display =
+            selectedType === "crop" ? "none" : "block";
+
+    }
+
+
+    // Reset all filters
+
+    window.resetFilters = function () {
+
+        typeFilter.value = "all";
+
+        cropFilter.value = "";
+
+        diseaseFilter.value = "";
+
+        dateFilter.value = "";
+
+        applyFilters();
+
+    };
+
+
+    // Listen for filter changes
+
+    typeFilter.addEventListener("change", applyFilters);
+
+    cropFilter.addEventListener("input", applyFilters);
+
+    diseaseFilter.addEventListener("input", applyFilters);
+
+    dateFilter.addEventListener("change", applyFilters);
+
+
+    // Initial filtering
+
+    applyFilters();
+
+});
+
+</script>
+
+{% endblock %}
